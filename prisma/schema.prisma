@@ -1,0 +1,15 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlserver"
+    url      = "sqlserver://vm.rahn.co.za:1433;trustServerCertificate=true;username=adgsenpai;password=#ADG@2022;database=EmailSubscriptions"
+}
+
+model EmailSubscriptions {
+    id           Int      @id @default(autoincrement())
+    email        String   @unique
+    isSubscribed Boolean  @default(true)
+    createdAt    DateTime @default(now())
+}

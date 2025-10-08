@@ -54,11 +54,7 @@ const RahnMonitor = () => {
         <div className="bg-wrapper" data-aos="fade">
           <Hero />
           {/* /.container */}
-          <img
-            src="/images/shape/shape_08.svg"
-            alt="illustration"
-            className="lazy-img shapes shape-eight"
-          />
+          
         </div>
       </div>
       {/* /.hero-banner-one */}

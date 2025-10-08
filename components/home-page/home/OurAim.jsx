@@ -12,27 +12,27 @@ const OurAim = () => {
   ];
 
   const imageItems = [
-    { src: "/images/media/RahnMonitorGrapgic.png", alt: "Rahn monitor Graphic" },
-    {
-      src: "/images/shape/shape_10.svg",
-      alt: "shape",
-      className: "shapes shape-two",
-    },
-    {
-      src: "/images/shape/shape_11.svg",
-      alt: "shape",
-      className: "lazy-img shapes shape-four",
-    },
-    {
-      src: "/images/shape/shape_12.svg",
-      alt: "shape",
-      className: "lazy-img shapes shape-five",
-    },
-    {
-      src: "/images/shape/shape_13.svg",
-      alt: "shape",
-      className: "lazy-img shapes shape-seven",
-    },
+    { src: "/images/media/RahnMonitorGrapgic.png", alt: "Rahn monitor Graphic" }
+    // {
+    //   src: "/images/shape/shape_10.svg",
+    //   alt: "shape",
+    //   className: "shapes shape-two",
+    // },
+    // {
+    //   src: "/images/shape/shape_11.svg",
+    //   alt: "shape",
+    //   className: "lazy-img shapes shape-four",
+    // },
+    // {
+    //   src: "/images/shape/shape_12.svg",
+    //   alt: "shape",
+    //   className: "lazy-img shapes shape-five",
+    // },
+    // {
+    //   src: "/images/shape/shape_13.svg",
+    //   alt: "shape",
+    //   className: "lazy-img shapes shape-seven",
+    // },
   ];
 
   return (

@@ -116,6 +116,11 @@ const MainMenu = () => {
               ))}
             </ul>
           </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="/recruitment">
+              Send CV
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

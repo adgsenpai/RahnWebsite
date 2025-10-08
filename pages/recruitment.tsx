@@ -183,7 +183,7 @@ const Recruitment = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-10 col-md-9 m-auto">
-              <p>
+              <div>
                 {" "}
                 <h3 className="tx-dark text-center mt-40 mb-20 lg-mt-40 lg-mb-50 wow fadeInUp">
                   INTRODUCING The RAHN Recruitment Candidate Screening
@@ -227,7 +227,7 @@ const Recruitment = () => {
                   If you’d simply like to send us your CV, fill in the form and
                   Upload your CV Today!
                 </h3>
-              </p>
+              </div>
             </div>
           </div>
         </div>

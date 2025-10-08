@@ -1,10 +1,10 @@
 const Illustration = () => {
   const shapes = [
-    { src: "/images/shape/shape_01.svg", className: "shapes shape-one" },
-    { src: "/images/shape/shape_02.svg", className: "shapes shape-two" },
-    { src: "/images/shape/shape_03.svg", className: "shapes shape-three" },
-    // { src: "/images/shape/shape_04.svg", className: "shapes shape-four" },
-    { src: "/images/shape/shape_04.svg", className: "shapes shape-five" },
+    // { src: "/images/shape/shape_01.svg", className: "shapes shape-one" },
+    // { src: "/images/shape/shape_02.svg", className: "shapes shape-two" },
+    // { src: "/images/shape/shape_03.svg", className: "shapes shape-three" },
+    // // { src: "/images/shape/shape_04.svg", className: "shapes shape-four" },
+    // { src: "/images/shape/shape_04.svg", className: "shapes shape-five" },
   ];
 
   return (

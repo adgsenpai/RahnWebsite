@@ -46,12 +46,12 @@ const DefaultHeader = () => {
             >
               <i className="bi bi-person" />
             </Link> */}
-            <Link
+            {/* <Link
               href="/contact"
               className="btn-twentyOne fw-500 tran3s d-none d-lg-block"
             >
               Contact us
-            </Link>
+            </Link> */}
           </div>{" "}
           {/* /.right-widget */}
           <MainMenu />

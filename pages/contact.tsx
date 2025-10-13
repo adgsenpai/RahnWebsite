@@ -73,8 +73,7 @@ const contact = () => {
                 </h2>
                 <p>
                   Ready to revolutionise your business? Let Rahn guide you with
-                  AI-powered solutions and expert support. Complete our Process
-                  Optimisation Form for you analysis, and we’ll show
+                  AI-powered solutions and expert support. Complete our contact form, and we’ll show
                   you how to save time, cut costs, and stay ahead. Our team is
                   prepared to assess your needs, deliver bespoke AI software,
                   and provide trusted consultants to bring your vision to life.

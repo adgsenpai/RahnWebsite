@@ -21,7 +21,7 @@
     "axios": "^1.5.0",
     "bootstrap": "^5.2.3",
     "carousel": "^0.0.3",
-    "dotenv": "^17.2.2",
+    "dotenv": "^17.2.3",
     "eslint": "8.31.0",
     "eslint-config-next": "13.2.3",
     "install": "^0.13.0",

@@ -116,11 +116,15 @@ const MainMenu = () => {
               ))}
             </ul>
           </li>
-         
+
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" 
-              href="/recruitment">
+            <a className="nav-link dropdown-toggle" href="/recruitment">
               Send CV
+            </a>
+          </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="/contact">
+              Contact Us
             </a>
           </li>
         </ul>

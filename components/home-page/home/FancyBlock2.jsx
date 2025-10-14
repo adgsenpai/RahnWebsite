@@ -25,11 +25,11 @@ const FancyBlock2 = () => {
       {cardsData.map((card, index) => (
         <div
           key={index}
-          className="col-lg-3 col-md-4 col-sm-6"
+          className="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center "
           data-aos="fade-up"
           data-aos-delay={card.delay}
         >
-          <div className="card-style-two mt-40">
+          <div className="card-style-two text-center d-flex flex-column align-items-center justify-content-center mt-40">
             <div className="icon d-flex align-items-end">
               <img src={card.icon} alt="" className="lazy-img" />
             </div>

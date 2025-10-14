@@ -134,7 +134,7 @@ const RahnMonitor = () => {
 			=====================================================
 			*/}
       <VideoBlock1 />
-      <div className="wrapper pt-110 lg-pt-80">
+      <div className="wrapper pt-70 lg-pt-50 pb-40">
         <div className="container">
           <div className="row justify-content-between">
             <FancyBlock2 />

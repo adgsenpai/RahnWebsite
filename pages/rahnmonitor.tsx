@@ -73,7 +73,8 @@ const RahnMonitor = () => {
                 </h2>
                 {/* /.title-style-one */}
                 <div className="pr-info fw-500 fs-20 tx-dark mt-35">
-                  <span className="fw-bold text-decoration-underline">
+                  <span className="fw-bold text-decoration-underline" style={{ color: "#be1e2e" }}>
+
                     A Multi-Phased Approach
                   </span>
                 </div>

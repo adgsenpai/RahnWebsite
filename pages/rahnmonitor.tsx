@@ -109,12 +109,12 @@ const RahnMonitor = () => {
         Feature Section Two
         ============================================== 
         */}
-      <div className="fancy-feature-two position-relative pt-150 lg-pt-500 sm-pt-60">
+      {/* <div className="fancy-feature-two position-relative pt-150 lg-pt-500 sm-pt-60">
         <div className="container">
           <OurAim />
         </div>
-        {/* /.container */}
-      </div>
+        
+      </div> */}
       {/* /.fancy-feature-two */}
       {/*
 			=====================================================

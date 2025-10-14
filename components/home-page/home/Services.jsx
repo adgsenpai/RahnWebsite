@@ -37,11 +37,11 @@ const Services = () => {
       {servicesData.map((service, index) => (
         <div
           key={index}
-          className={`col-lg-3 col-sm-6`}
+          className={`col-lg-3 col-sm-6 d-flex justify-content-center`}
           data-aos="fade-up"
           data-aos-delay={`${index * 100}`}
         >
-          <div className="card-style-one pe-xxl-5 position-relative mt-40">
+          <div className="card-style-one text-center d-flex flex-column align-items-center justify-content-center pe-xxl-5 position-relative mt-40">
             <div
               className="icon d-flex align-items-center justify-content-center"
               style={{ backgroundColor: service.bgColor }}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
+import Modal from "../common/Modal";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +8,13 @@ const ContactForm = () => {
     email: "",
     phone: "",
     subject: "",
+    message: "",
+  });
+
+  const [modal, setModal] = useState({
+    isOpen: false,
+    type: "info",
+    title: "",
     message: "",
   });
 
@@ -21,11 +28,11 @@ const ContactForm = () => {
     const apiKey = "RahnWebsite"; // must match backend
 
     try {
-      Swal.fire({
+      setModal({
+        isOpen: true,
+        type: "loading",
         title: "Sending Message...",
-        allowOutsideClick: false,
-        showConfirmButton: false,
-        willOpen: () => Swal.showLoading(),
+        message: "Please wait while we send your message.",
       });
 
       const response = await axios.post(
@@ -44,13 +51,12 @@ const ContactForm = () => {
         }
       );
 
-      Swal.close();
-
       if (response.status === 200) {
-        Swal.fire({
-          icon: "success",
-          title: "Message Sent",
-          text: "Your message has been sent successfully!",
+        setModal({
+          isOpen: true,
+          type: "success",
+          title: "Message Sent!",
+          message: "Your message has been sent successfully. We'll get back to you soon!",
         });
         setFormData({
           name: "",
@@ -62,17 +68,25 @@ const ContactForm = () => {
       }
     } catch (error) {
       console.error(error);
-      Swal.close();
-      Swal.fire({
-        icon: "error",
+      setModal({
+        isOpen: true,
+        type: "error",
         title: "Oops...",
-        text: "Failed to send your message. Please try again later.",
+        message: "Failed to send your message. Please try again later.",
       });
     }
   };
 
   return (
-    <div className="form-style-two" data-aos="fade-up">
+    <>
+      <Modal
+        isOpen={modal.isOpen}
+        onClose={() => setModal({ ...modal, isOpen: false })}
+        type={modal.type}
+        title={modal.title}
+        message={modal.message}
+      />
+      <div className="form-style-two" data-aos="fade-up">
       <form onSubmit={handleSubmit}>
         <div className="row controls">
           {/* Subject Dropdown */}
@@ -165,6 +179,7 @@ const ContactForm = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

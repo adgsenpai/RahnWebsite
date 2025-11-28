@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { verifyCaptcha } from "../../captcha/ServerActions"; // Adjust the path
 import axios from "axios";
-import Swal from "sweetalert2";
+import Modal from "../common/Modal";
 
 const CVForm = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +14,12 @@ const CVForm = () => {
   });
 
   const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+  const [modal, setModal] = useState({
+    isOpen: false,
+    type: "info",
+    title: "",
+    message: "",
+  });
 
   const handleChange = (event) => {
     if (event.target.name === "cv") {
@@ -43,12 +49,12 @@ const CVForm = () => {
     event.preventDefault();
 
     if (!isCaptchaVerified) {
-      Swal.fire({
-        icon: "error",
+      setModal({
+        isOpen: true,
+        type: "error",
         title: "Oops...",
-        text: "Please verify that you are not a robot!",
+        message: "Please verify that you are not a robot!",
       });
-
       return;
     }
 
@@ -92,44 +98,54 @@ const CVForm = () => {
     };
 
     try {
-      Swal.fire({
-        title: "Sending Email...",
-        text: "Please wait",
-        allowOutsideClick: false,
-        showConfirmButton: false,
-        willOpen: () => {
-          Swal.showLoading();
-        },
+      setModal({
+        isOpen: true,
+        type: "loading",
+        title: "Sending CV...",
+        message: "Please wait while we upload your CV.",
       });
 
       const response = await axios.post("/api/sendCV", data, config);
 
       if (response.status === 200) {
-        Swal.fire({
-          icon: "success",
-          title: "Success",
-          text: "Email sent successfully!",
+        setModal({
+          isOpen: true,
+          type: "success",
+          title: "Success!",
+          message: "Your CV has been sent successfully! We'll review it and get back to you soon.",
         });
 
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       } else {
-        Swal.fire({
-          icon: "error",
+        setModal({
+          isOpen: true,
+          type: "error",
           title: "Oops...",
-          text: "An error occurred while sending the email.",
+          message: "An error occurred while sending your CV. Please try again.",
         });
       }
     } catch (error) {
       console.error("Error sending email:", error);
-      Swal.fire({
-        icon: "error",
+      setModal({
+        isOpen: true,
+        type: "error",
         title: "Oops...",
-        text: "An error occurred while sending the email.",
+        message: "An error occurred while sending your CV. Please try again.",
       });
     }
   };
   return (
-    <div className="container" data-aos="fade-up">
+    <>
+      <Modal
+        isOpen={modal.isOpen}
+        onClose={() => setModal({ ...modal, isOpen: false })}
+        type={modal.type}
+        title={modal.title}
+        message={modal.message}
+      />
+      <div className="container" data-aos="fade-up">
       <form onSubmit={handleSubmit}>
         <div className="messages" />
         <div className="row controls">
@@ -227,6 +243,7 @@ const CVForm = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 export default CVForm;

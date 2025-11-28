@@ -1,4 +1,4 @@
-import sendEmail from "./mail";
+import sendEmail from "./attachmentMail";
 
 console.log("Sending email...");
 
@@ -10,5 +10,5 @@ const attachments = [
     },
 ];
 
-
-//sendEmail("ashlin@rahn.co.za", "Test email", "<h1>Test email</h1>", "This is a test email.", attachments)
+// Example usage:
+// sendEmail("recipient@example.com", "Test email", "<h1>Test email</h1>", "This is a test email.", attachments)

@@ -1,6 +1,5 @@
 import * as nodemailer from "nodemailer";
-import dotenv from "dotenv";
-dotenv.config();
+import { emailConfig } from "./config";
 
 export default async function sendEmail(
   toEmail: string,   // user's email from form
@@ -9,13 +8,13 @@ export default async function sendEmail(
   phone: string      // ✅ phone number field
 ) {
   try {
-  const hostname = process.env.EMAIL_HOST;
-  const username = process.env.EMAIL_USER; // your Office365 account
-  const password = process.env.EMAIL_PASS;
+  const hostname = emailConfig.SMTP_SERVER;
+  const username = emailConfig.SMTP_USERNAME;
+  const password = emailConfig.SMTP_PASSWORD;
 
     const transporter = nodemailer.createTransport({
       host: hostname,
-      port: Number(process.env.EMAIL_PORT) || 587,
+      port: emailConfig.SMTP_PORT,
       secure: false,
       auth: {
         user: username,

@@ -11,20 +11,16 @@ const RECIPIENTS = [
 
 const db = prisma as any;
 
+import { verifySessionToken } from '../../../lib/auth';
+
 function isAuthorized(req: NextApiRequest): boolean {
   const cronSecret = process.env.CRON_SECRET;
   const authHeader = req.headers['authorization'];
+  // Vercel Cron and manual CLI both send: Authorization: Bearer <CRON_SECRET>
   if (cronSecret && authHeader === `Bearer ${cronSecret}`) return true;
-  // Also allow if called with admin session cookie (for manual sends)
+  // Allow admin session cookie (for the "Send Now" button in the dashboard)
   const cookie = req.cookies?.admin_session;
-  if (cookie) {
-    try {
-      const { verifySession } = require('../../../lib/auth');
-      return verifySession(cookie);
-    } catch {
-      return false;
-    }
-  }
+  if (cookie && verifySessionToken(cookie)) return true;
   return false;
 }
 

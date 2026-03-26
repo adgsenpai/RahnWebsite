@@ -44,7 +44,10 @@ export default function AnalyticsPage() {
     setSending(true);
     setSendMsg('');
     try {
-      const res = await fetch('/api/cron/weekly-analytics', { method: 'POST' });
+      const res = await fetch('/api/cron/weekly-analytics', {
+        method: 'POST',
+        credentials: 'include',
+      });
       const d = await res.json();
       setSendMsg(d.message || d.error || 'Done');
     } catch (e: any) {

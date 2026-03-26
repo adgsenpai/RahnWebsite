@@ -61,7 +61,7 @@ const BlogsPage = () => {
         });
       }
     });
-    return Array.from(kws).sort();
+    return Array.from(kws).sort() as string[];
   }, [posts]);
 
   // Filter posts based on search and active keyword
@@ -91,7 +91,7 @@ const BlogsPage = () => {
     return result;
   }, [posts, search, activeKeyword]);
 
-  const handleKeywordClick = (kw) => {
+  const handleKeywordClick = (kw: string) => {
     if (activeKeyword === kw) {
       setActiveKeyword("");
       router.replace("/blogs", undefined, { shallow: true });
@@ -103,7 +103,7 @@ const BlogsPage = () => {
     }
   };
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
 

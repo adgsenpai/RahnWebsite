@@ -5,6 +5,7 @@ export default function AdminDashboard() {
   const router = useRouter();
   useEffect(() => {
     router.replace('/admin/blogs');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return null;
 }

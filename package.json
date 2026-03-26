@@ -10,7 +10,9 @@
     "build": "next build && prisma generate",
     "start": "next start",
     "lint": "next lint",
-    "uat:recruitment": "node scripts/uat/recruitment-uat.js"
+    "uat:recruitment": "node scripts/uat/recruitment-uat.js",
+    "cron": "ts-node scripts/cron.ts",
+    "send-analytics-now": "ts-node -e \"require('./scripts/cron'); setTimeout(()=>{const {runWeeklyAnalyticsEmail}=require('./pages/api/cron/weekly-analytics');runWeeklyAnalyticsEmail().then(r=>console.log(r)).catch(console.error)},500)\""
   },
   "dependencies": {
     "@calcom/embed-react": "^1.3.0",
@@ -18,6 +20,7 @@
     "@prisma/client": "^5.2.0",
     "@types/jest": "^29.5.1",
     "@types/node": "^18.19.126",
+    "@types/node-cron": "^3.0.11",
     "@types/react": "^18.0.38",
     "@types/react-dom": "^18.0.11",
     "aos": "^2.3.4",
@@ -31,6 +34,7 @@
     "multer": "^1.4.5-lts.1",
     "next": "^13.5.11",
     "next-seo": "^6.4.0",
+    "node-cron": "^4.2.1",
     "nodemailer": "^6.10.1",
     "owl.carousel": "^2.3.4",
     "photoswipe": "^5.3.7",

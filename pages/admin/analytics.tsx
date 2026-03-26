@@ -27,6 +27,8 @@ export default function AnalyticsPage() {
   const [data, setData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'overview' | 'pages' | 'geo' | 'visitors'>('overview');
+  const [sending, setSending] = useState(false);
+  const [sendMsg, setSendMsg] = useState('');
 
   useEffect(() => {
     fetch('/api/admin/analytics')
@@ -37,6 +39,19 @@ export default function AnalyticsPage() {
       })
       .catch(() => setLoading(false));
   }, []);
+
+  const sendReport = async () => {
+    setSending(true);
+    setSendMsg('');
+    try {
+      const res = await fetch('/api/cron/weekly-analytics', { method: 'POST' });
+      const d = await res.json();
+      setSendMsg(d.message || d.error || 'Done');
+    } catch (e: any) {
+      setSendMsg('Failed: ' + e.message);
+    }
+    setSending(false);
+  };
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleString('en-ZA', {
@@ -91,7 +106,21 @@ export default function AnalyticsPage() {
         >
           <i className="bi bi-arrow-clockwise me-1"></i> Refresh
         </button>
+        <button
+          className="btn btn-outline-success btn-sm ms-2"
+          onClick={sendReport}
+          disabled={sending}
+        >
+          <i className={`bi ${sending ? 'bi-hourglass-split' : 'bi-envelope-arrow-up'} me-1`}></i>
+          {sending ? 'Sending...' : 'Send Weekly Report Now'}
+        </button>
       </div>
+      {sendMsg && (
+        <div className={`alert ${sendMsg.toLowerCase().includes('fail') || sendMsg.toLowerCase().includes('error') ? 'alert-danger' : 'alert-success'} alert-dismissible py-2`}>
+          <i className="bi bi-envelope me-2"></i>{sendMsg}
+          <button type="button" className="btn-close" onClick={() => setSendMsg('')}></button>
+        </div>
+      )}
 
       {/* Stat Cards */}
       <div className="row g-3 mb-4">

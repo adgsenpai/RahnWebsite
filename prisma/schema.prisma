@@ -13,3 +13,41 @@ model EmailSubscriptions {
     isSubscribed Boolean  @default(true)
     createdAt    DateTime @default(now())
 }
+
+model Blog {
+    id              Int      @id @default(autoincrement())
+    title           String   @db.NVarChar(500)
+    slug            String   @unique @db.NVarChar(500)
+    content         String   @db.NVarChar(Max)
+    excerpt         String?  @db.NVarChar(2000)
+    featuredImage   String?  @db.NVarChar(Max)
+    author          String?  @db.NVarChar(200) @default("RAHN Team")
+    published       Boolean  @default(false)
+    ogTitle         String?  @db.NVarChar(500)
+    ogDescription   String?  @db.NVarChar(1000)
+    ogImage         String?  @db.NVarChar(Max)
+    metaKeywords    String?  @db.NVarChar(1000)
+    metaDescription String?  @db.NVarChar(2000)
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+}
+
+model UploadedImage {
+    id        Int      @id @default(autoincrement())
+    filename  String   @db.NVarChar(500)
+    dataUrl   String?  @db.NVarChar(Max)
+    mimeType  String?  @db.NVarChar(100)
+    url       String?  @db.NVarChar(1000)
+    createdAt DateTime @default(now())
+}
+
+model PageView {
+    id        Int      @id @default(autoincrement())
+    path      String   @db.NVarChar(500)
+    ip        String?  @db.NVarChar(100)
+    country   String?  @db.NVarChar(100)
+    city      String?  @db.NVarChar(200)
+    userAgent String?  @db.NVarChar(1000)
+    referer   String?  @db.NVarChar(1000)
+    createdAt DateTime @default(now())
+}

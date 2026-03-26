@@ -39,12 +39,14 @@ const MainRoot = () => {
         async
         dangerouslySetInnerHTML={{
           __html: `
-          try{
-            setInterval(function() {document.getElementsByTagName('video')[0].play()}, 100);
-          }
-          catch{
-            console.log("error");
-          }
+          var _videoInterval = setInterval(function() {
+            try {
+              var v = document.getElementsByTagName('video')[0];
+              if (v) { v.play(); clearInterval(_videoInterval); }
+            } catch(e) {
+              clearInterval(_videoInterval);
+            }
+          }, 100);
             `
         }}
       />

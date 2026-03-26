@@ -6,9 +6,20 @@ import Link from "next/link";
 import React, { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 
+interface BlogPost {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  featuredImage?: string;
+  author?: string;
+  metaKeywords?: string;
+  createdAt: string;
+}
+
 const BlogsPage = () => {
   const router = useRouter();
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [search, setSearch] = useState("");
   const [activeKeyword, setActiveKeyword] = useState("");
   const [loading, setLoading] = useState(true);

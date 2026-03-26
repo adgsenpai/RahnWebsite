@@ -74,6 +74,7 @@ export default function BlogForm({ blogId }: { blogId?: number }) {
         )
         .catch(() => router.push('/admin/blogs'));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blogId]);
 
   const handleChange = (e: any) => {

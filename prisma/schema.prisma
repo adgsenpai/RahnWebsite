@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlserver"
-    url      = "sqlserver://vm.rahn.co.za:1433;trustServerCertificate=true;username=adgsenpai;password=#ADG@2022;database=EmailSubscriptions"
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
 }
 
 model EmailSubscriptions {
